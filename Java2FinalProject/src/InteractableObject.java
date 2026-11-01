@@ -19,7 +19,7 @@ public abstract class InteractableObject
 	}
 	
 	/**
-	 * 
+	 * Adding some notes that I will revert later through git
 	 */
 	public abstract void examine();
 	{
