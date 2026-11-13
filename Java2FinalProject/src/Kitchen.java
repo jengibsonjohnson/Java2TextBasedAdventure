@@ -7,10 +7,9 @@ public class Kitchen extends Room
 	String description;
 	
 	// Constructor for superclass name and this room's description
-	public Kitchen(String roomDescription) 
+	public Kitchen() 
 	{
-		super("Kitchen");
-		this.description = roomDescription;
+		super("Kitchen", "Kitchen description");
 	}
 	
 	// Getter for description of this room
@@ -27,5 +26,14 @@ public class Kitchen extends Room
 	{
 		System.out.println(getRoomName());
 		System.out.println(getDescription());
+	}
+	
+	/*
+	 * 
+	 */
+	@Override
+	public void onEnter(Player player, GameState state)
+	{
+		
 	}
 }

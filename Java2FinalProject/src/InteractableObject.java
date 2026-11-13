@@ -1,28 +1,146 @@
 /**
  * 
  */
-public abstract class InteractableObject 
+public class InteractableObject 
 {
 	// Variables
 	private String name;
+	private String description;
+	private boolean canBeAddedToInventory;
+	private boolean isReusable;
+	private boolean isReadable;
+	private boolean isEdible;
 	
-	// Getter
+	/*
+	 * Constructor
+	 */
+	public InteractableObject(String objectName, String objectDescription)
+	{
+		//, Boolean canBePickedUp, Boolean objectIsReusable, Boolean objectCanBeRead, Boolean objectEdible
+		
+		this.name = objectName;
+		this.description = objectDescription;
+		this.canBeAddedToInventory = false;
+		this.isReusable = false;
+		this.isReadable = false;
+		this.isEdible = false;
+	}
+	
+	/*
+	 * 
+	 */
 	public String getName()
 	{
 		return name;
 	}
 	
-	// Constructor
-	public InteractableObject(String objectName)
+	/*
+	 * 
+	 */
+	public String getDescription()
+	{
+		return description;
+	}
+	
+	/*
+	 * 
+	 */
+	public boolean getCanBeAddedToInventory()
+	{
+		return canBeAddedToInventory;
+	}
+	
+	/*
+	 * 
+	 */
+	public boolean getIsReusable()
+	{
+		return isReusable;
+	}
+	
+	/*
+	 * 
+	 */
+	public boolean getIsReadable()
+	{
+		return isReadable;
+	}
+	
+	/*
+	 * 
+	 */
+	public boolean getIsEdible()
+	{
+		return isEdible;
+	}
+		
+	/*
+	 * 
+	 */
+	public void setName(String objectName)
 	{
 		this.name = objectName;
+	}
+	
+	/*
+	 * 
+	 */
+	public void setDescription(String objectDescription)
+	{
+		this.description = objectDescription;
 	}
 	
 	/**
 	 * 
 	 */
-	public abstract void examine();
+	public void setCanBeAddedToInventory(Boolean value)
 	{
-		
+		this.canBeAddedToInventory = value;
 	}
+	
+	/**
+	 * 
+	 */
+	public void setIsReusable(Boolean value)
+	{
+		this.isReusable = value;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setIsReadable(Boolean value)
+	{
+		this.isReadable = value;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setIsEdible(Boolean value)
+	{
+		this.isEdible = value;
+	}
+	
+	/**
+	 * 
+	 */
+	public void examine()
+	{
+		System.out.println(this.description);
+	}
+	
+	/**
+	 * 
+	 */
+	public Boolean useItem(Room currentRoom, InteractableObject item)
+	{
+		// TODO
+		return true;
+	}
+	
+	/*
+	 * 
+	 */
+	//public abstract void interact(Player player, Room currentRoom);
 }

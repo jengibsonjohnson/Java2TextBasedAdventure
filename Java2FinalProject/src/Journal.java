@@ -7,9 +7,9 @@ public class Journal extends InteractableObject
 	private String entryText;
 	
 	// Constructor
-	public Journal(String objectName, String text)
+	public Journal(String objectName, String objectDescription, String text)
 	{
-		super(objectName);
+		super(objectName, objectDescription);
 		this.entryText = text;
 	}
 	
@@ -22,4 +22,13 @@ public class Journal extends InteractableObject
 		System.out.println("You open the journal to its last entry:");
 		System.out.println("\"" + entryText + "\"");
 	}
+	
+	/*
+	 * 
+	 */
+	//@Override
+	//public void interact(Player player, Room currentRoom)
+	//{
+	//	
+	//}
 }
