@@ -1,3 +1,8 @@
+package rooms;
+import game.*;
+import objects.*;
+import interfaces.*;
+import enums.*;
 
 public class Courtyard extends Room 
 {

@@ -1,15 +1,18 @@
-/**
- * Class for the Kitchen (Room)
- */
-public class Kitchen extends Room 
+package rooms;
+import game.*;
+import objects.*;
+import interfaces.*;
+import enums.*;
+
+public class NellsWorkshop extends Room 
 {
 	// Variables
 	String description;
 	
 	// Constructor for superclass name and this room's description
-	public Kitchen() 
+	public NellsWorkshop() 
 	{
-		super("Kitchen", "Kitchen description");
+		super("Nell's Workshop", "Nell's workshop description");
 	}
 	
 	// Getter for description of this room
@@ -28,9 +31,6 @@ public class Kitchen extends Room
 		System.out.println(getDescription());
 	}
 	
-	/*
-	 * 
-	 */
 	@Override
 	public void onEnter(Player player, GameState state)
 	{

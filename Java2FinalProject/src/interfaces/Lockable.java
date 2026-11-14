@@ -1,6 +1,13 @@
 /*
  * 1.2. Polymorphic class structure with use of parent classes and interfaces
  */
+package interfaces;
+
+import enums.*;
+import game.*;
+import rooms.*;
+import objects.*;
+
 public interface Lockable 
 {
 	/* Lock the object */

@@ -1,3 +1,10 @@
+package rooms;
+
+import enums.*;
+import game.*;
+import interfaces.*;
+import objects.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

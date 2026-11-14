@@ -1,3 +1,10 @@
+package objects;
+
+import enums.*;
+import game.*;
+import interfaces.*;
+import rooms.*;
+
 public class NellsDoor extends InteractableObject implements Lockable
 {
 	/* Variables */

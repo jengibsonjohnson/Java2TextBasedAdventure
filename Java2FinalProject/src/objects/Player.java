@@ -1,3 +1,8 @@
+package objects;
+import game.*;
+import rooms.*;
+import interfaces.*;
+import enums.*;
 import java.util.List;
 
 public class Player 

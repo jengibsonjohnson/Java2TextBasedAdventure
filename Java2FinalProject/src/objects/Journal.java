@@ -1,3 +1,9 @@
+package objects;
+import game.*;
+import rooms.*;
+import interfaces.*;
+import enums.*;
+
 /**
  * Class for Nell's Journal (InteractableObject)
  */

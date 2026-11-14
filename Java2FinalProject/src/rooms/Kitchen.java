@@ -1,13 +1,20 @@
-
-public class Privy extends Room 
+package rooms;
+import game.*;
+import objects.*;
+import interfaces.*;
+import enums.*;
+/**
+ * Class for the Kitchen (Room)
+ */
+public class Kitchen extends Room 
 {
 	// Variables
 	String description;
 	
 	// Constructor for superclass name and this room's description
-	public Privy() 
+	public Kitchen() 
 	{
-		super("Privy", "Privy Description");
+		super("Kitchen", "Kitchen description");
 	}
 	
 	// Getter for description of this room
@@ -26,6 +33,9 @@ public class Privy extends Room
 		System.out.println(getDescription());
 	}
 	
+	/*
+	 * 
+	 */
 	@Override
 	public void onEnter(Player player, GameState state)
 	{

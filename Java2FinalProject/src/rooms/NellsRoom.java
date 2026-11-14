@@ -1,13 +1,18 @@
+package rooms;
+import game.*;
+import objects.*;
+import interfaces.*;
+import enums.*;
 
-public class LlensRoom extends Room
+public class NellsRoom extends Room 
 {
 	// Variables
 	String description;
 	
 	// Constructor for superclass name and this room's description
-	public LlensRoom() 
+	public NellsRoom() 
 	{
-		super("Llen's Room", "Llen's room description");
+		super("Nell's Room", "Nell's Room Description");
 	}
 	
 	// Getter for description of this room

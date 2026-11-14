@@ -1,3 +1,10 @@
+package rooms;
+
+import enums.*;
+import interfaces.*;
+import game.*;
+import objects.*;
+
 
 public class CommonRoom extends Room 
 {
@@ -38,10 +45,11 @@ public class CommonRoom extends Room
 		System.out.println(getRoomName());
 		System.out.println(getDescription());
 	}
-	
+
 	@Override
-	public void onEnter(Player player, GameState state)
+	public void onEnter(Player player, GameState state) 
 	{
+		// TODO Auto-generated method stub
 		
 	}
 }
