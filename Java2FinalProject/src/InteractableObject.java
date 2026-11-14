@@ -10,6 +10,8 @@ public class InteractableObject
 	private boolean isReusable;
 	private boolean isReadable;
 	private boolean isEdible;
+//	private boolean isLocked;
+//	private InteractableObject key;
 	
 	/*
 	 * Constructor
@@ -24,6 +26,8 @@ public class InteractableObject
 		this.isReusable = false;
 		this.isReadable = false;
 		this.isEdible = false;
+//		this.isLocked = true;
+//		this.key = requiredKey;
 	}
 	
 	/*
@@ -74,6 +78,14 @@ public class InteractableObject
 		return isEdible;
 	}
 		
+//	/*
+//	 * 
+//	 */
+//	public boolean getIsLocked()
+//	{
+//		return isLocked;
+//	}
+//	
 	/*
 	 * 
 	 */
@@ -121,6 +133,22 @@ public class InteractableObject
 	{
 		this.isEdible = value;
 	}
+	
+//	/*
+//	 * 
+//	 */
+//	public void setIsLocked(Boolean value)
+//	{
+//		this.isLocked = value;
+//	}
+//	
+//	/*
+//	 * 
+//	 */
+//	public void setRequiredKey(InteractableObject requiredKey)
+//	{
+//		this.key = requiredKey;
+//	}
 	
 	/**
 	 * 

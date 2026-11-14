@@ -69,6 +69,7 @@ public abstract class Room
 		return itemList.hasItem(name);
 	}
 	
+	// Search the room inventory/item list
 	public InteractableObject searchInventory(String name)
 	{
 		return itemList.searchInventory(name);

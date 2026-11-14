@@ -48,6 +48,23 @@ public class GameEngine
 
 			// Create the Player object
 			Player player = new Player(commonRoom);
+			
+			// Create Helper Text
+			Helper help = new Helper(
+					"Available commands (action + noun)\n" +
+					"DROP\n"+
+					"EAT\n"+
+					"EXAMINE\n"+
+					"GO\n"+
+					"OPEN\n"+
+					"READ\n"+
+					"TAKE\n"+
+					"USE\n\n"+
+					"Single-word actions (no noun required)\n"+
+					"HELP\n"+
+					"INVENTORY\n"+
+					"QUIT"
+					);
 
 			// Ask Player for name
 			//			System.out.println("Enter your name:");
@@ -94,7 +111,8 @@ public class GameEngine
 						{
 						case HELP:
 
-							// show the game's help text
+							// Show the game's help text
+							help.displayHelpText();
 
 							break;
 
@@ -167,6 +185,9 @@ public class GameEngine
 							break;
 
 						case GO:
+							
+							//TODO 
+							//incorporate the direction enum
 
 							// check if the direction the player chose has an exit
 							Room newRoom = player.getCurrentRoom().getExit(noun);
