@@ -7,11 +7,11 @@ import rooms.*;
 
 public enum Action 
 {
+	DRINK,
 	DROP,
 	EAT,
 	EXAMINE,
 	GO,
-	OPEN,
 	READ,
 	TAKE,
 	USE,

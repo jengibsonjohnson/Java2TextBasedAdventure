@@ -6,19 +6,10 @@ import enums.*;
 
 public class Courtyard extends Room 
 {
-	// Variables
-	String description;
-	
 	// Constructor for superclass name and this room's description
 	public Courtyard() 
 	{
 		super("Courtyard", "Courtyard description");
-	}
-	
-	// Getter for description of this room
-	public String getDescription() 
-	{
-		return description;
 	}
 	
 	/**

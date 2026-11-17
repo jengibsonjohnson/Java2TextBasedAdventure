@@ -6,19 +6,14 @@ import enums.*;
 
 public class NellsRoom extends Room 
 {
-	// Variables
-	String description;
-	
 	// Constructor for superclass name and this room's description
 	public NellsRoom() 
 	{
 		super("Nell's Room", "Nell's Room Description");
-	}
-	
-	// Getter for description of this room
-	public String getDescription() 
-	{
-		return description;
+		
+		InteractableObject nellsDoor = new NellsDoor("Nell's Door", "This is the door to Nell's workshop.");
+		
+		super.addItem(nellsDoor);
 	}
 	
 	/**

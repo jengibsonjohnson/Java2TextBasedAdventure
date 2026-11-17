@@ -8,19 +8,10 @@ import enums.*;
  */
 public class Kitchen extends Room 
 {
-	// Variables
-	String description;
-	
 	// Constructor for superclass name and this room's description
 	public Kitchen() 
 	{
 		super("Kitchen", "Kitchen description");
-	}
-	
-	// Getter for description of this room
-	public String getDescription() 
-	{
-		return description;
 	}
 	
 	/**

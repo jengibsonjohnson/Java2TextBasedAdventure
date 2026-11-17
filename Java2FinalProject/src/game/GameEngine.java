@@ -54,22 +54,22 @@ public class GameEngine
 
 			// Create the Player object
 			Player player = new Player(commonRoom);
-			
+
 			// Create Helper Text
 			Helper help = new Helper(
 					"Available commands (action + noun)\n" +
-					"DROP\n"+
-					"EAT\n"+
-					"EXAMINE\n"+
-					"GO\n"+
-					"OPEN\n"+
-					"READ\n"+
-					"TAKE\n"+
-					"USE\n\n"+
-					"Single-word actions (no noun required)\n"+
-					"HELP\n"+
-					"INVENTORY\n"+
-					"QUIT"
+							"DRINK\n"+
+							"DROP\n"+
+							"EAT\n"+
+							"EXAMINE\n"+
+							"GO\n"+
+							"READ\n"+
+							"TAKE\n"+
+							"USE\n\n"+
+							"Single-word actions (no noun required)\n"+
+							"HELP\n"+
+							"INVENTORY\n"+
+							"QUIT"
 					);
 
 			// Ask Player for name
@@ -110,8 +110,8 @@ public class GameEngine
 					try 
 					{
 						Action action = Action.valueOf(verb);
-						System.out.println("Action provided: " + action);
-						System.out.println("Noun provided: " + noun);
+						//System.out.println("Action provided: " + action);
+						//System.out.println("Noun provided: " + noun);
 
 						switch (action) 
 						{
@@ -124,13 +124,8 @@ public class GameEngine
 
 						case INVENTORY:
 
-							System.out.println("=== Inventory ===");
-
-							// show the player's current inventory
-							for (InteractableObject item : player.getInventory())
-							{
-								System.out.println("* " + item.getName().toString());
-							}
+							// Display player inventory
+							player.displayPlayerInventory();
 
 							break;
 
@@ -141,23 +136,29 @@ public class GameEngine
 
 							break;
 
+						case DRINK:
+
+							//TODO
+
+							break;
+
 						case DROP:
 
 							// Check to see if the object exists in the player's current room
 							InteractableObject objectToDrop = player.searchInventory(noun);
 
 							// If the object exists
-							if (objectToDrop != null) 
+							if (objectToDrop != null && objectToDrop instanceof Droppable d) 
 							{
 								// if so, drop the item (and add it to the current room's inventory)
-								// If yes, then add item to player inventory 
 								player.removeItem(objectToDrop);
 
-								// Remove it from room inventory
+								// Add it to room inventory
 								player.getCurrentRoom().addItem(objectToDrop);
 
-								// Tell the user it was added to their inventory
-								System.out.println(objectToDrop.getName() + " was removed from your inventory.");
+								// Tell the user it was dropped from their inventory
+								d.drop();
+								System.out.println(d.dropMessage());
 							}
 
 							else
@@ -170,6 +171,7 @@ public class GameEngine
 
 						case EAT:
 
+							// TODO
 							// check that the item is in the room or is in the player's inventory
 
 							// if it is, then check to see if the object is edible
@@ -182,51 +184,97 @@ public class GameEngine
 
 						case EXAMINE:
 
-							// check that the item is in the room or is in the player's inventory
-
-							// if it is, then examine the object
-
-							// else, tell the player they cannot do that
-
-							break;
-
-						case GO:
-							
-							//TODO 
-							//incorporate the direction enum
-
-							// check if the direction the player chose has an exit
-							Room newRoom = player.getCurrentRoom().getExit(noun);
-
-							if (newRoom != null)
+							// Check if the player wants to examine the current room
+							if (noun == null || noun.isEmpty() || noun.equalsIgnoreCase("room"))
 							{
-								// if so, update the player's current room to the neighboring room
-								player.setCurrentRoom(newRoom);
+								player.getCurrentRoom().examine();
 							}
 
 							else 
 							{
-								// if not, tell the player they cannot go that way
-								System.out.println("You cannot go that way.");
+								InteractableObject objectToExamine = null;
+
+								// Check player's inventory first
+								objectToExamine = player.searchInventory(noun);
+
+								// If not found, check the room's inventory
+								if (objectToExamine == null) 
+								{
+									objectToExamine = player.getCurrentRoom().searchInventory(noun);
+								}
+
+								// Examine if found, otherwise give feedback
+								if (objectToExamine != null) 
+								{
+									objectToExamine.examine();
+								} 
+								else 
+								{
+									System.out.println("You don't see that here.");
+								}
 							}
 
 							break;
 
-						case OPEN:
+						case GO:
 
-							// ?? Not sure, maybe for a locked element
+							try {
+
+								// Get the direction the user has provided with the "go" command
+								Direction direction = Direction.valueOf(noun);
+
+								if (direction != null)
+								{
+									// check if the direction the player chose has an exit
+									Room newRoom = player.getCurrentRoom().getExit(noun);
+
+									if (newRoom != null)
+									{
+										// if so, update the player's current room to the neighboring room
+										player.setCurrentRoom(newRoom);
+										System.out.println(newRoom.getDescription());
+									}
+
+									else 
+									{
+										// if not, tell the player they cannot go that way
+										System.out.println("You cannot go that way.");
+									}
+								}
+							}
+							catch (IllegalArgumentException e)
+							{
+								// Catches invalid strings and safely triggers your fallback feedback
+								System.out.println("Not a valid direction.");
+							}
 
 							break;
 
 						case READ:
 
-							// check that the item is in the room or is in the player's inventory
+							// check that the item is in the player's inventory
+							InteractableObject objectToRead = player.searchInventory(noun);
 
-							// if it is, check to see it's able to be read
+							if (objectToRead != null)
+							{
+								// if it is, check to see it's able to be read
+								if (objectToRead instanceof Legible l)
+								{
+									// if yes, then read the item
+									l.read();
+								}
 
-							// if yes, then read the item
+								else
+								{
+									System.out.println("You cannot read that.");
+								}
+							}
 
-							// if no, tell the player they cannot do that
+							else 
+							{
+								// if no, tell the player they cannot do that
+								System.out.println("You do not have that item.");
+							}
 
 							break;
 
@@ -238,8 +286,8 @@ public class GameEngine
 							// If the object exists
 							if (objectToTake != null) 
 							{
-								// Check that it can be added to the player's inventory
-								if (objectToTake.getCanBeAddedToInventory()) 
+								// Check that it can be added to the player's inventory (taken)
+								if (objectToTake instanceof Takeable t)
 								{
 									// If yes, then add item to player inventory 
 									player.addItem(objectToTake);
@@ -248,7 +296,8 @@ public class GameEngine
 									player.getCurrentRoom().removeItem(objectToTake);
 
 									// Tell the user it was added to their inventory
-									System.out.println(objectToTake.getName() + " was added to your inventory.");
+									t.take();
+									System.out.println(t.pickupMessage());
 								}
 								// If cannot be picked up, tell the player they cannot take that
 								else
@@ -273,22 +322,30 @@ public class GameEngine
 							// If the object exists
 							if (objectToUse != null) 
 							{
-								// use the item, if item usage successful
-								if (objectToUse.useItem(player.getCurrentRoom(), objectToUse)) 
+								if (objectToUse instanceof Usable u)
 								{
-									// and the object is not reusable
-									if (!objectToUse.getIsReusable())
+									// use the item, if item usage successful
+									if (u.useItem(player.getCurrentRoom(), objectToUse)) 
 									{
-										player.removeItem(objectToUse);
+										System.out.println(u.useMessage());
+										
+										// and the object is not reusable
+										if (!(objectToUse instanceof Reusable))
+										{
+											player.removeItem(objectToUse);
+										}
+									}
+
+									else
+									{
+										System.out.println("You cannot use that item here.");
 									}
 								}
-
 								else
 								{
-									System.out.println("You cannot use that item here.");
+									System.out.println("You cannot use that item.");
 								}
 							}
-
 							else
 							{
 								// if not, tell the player they don't have that item
@@ -296,7 +353,6 @@ public class GameEngine
 							}		
 
 							break;
-
 
 						default:
 							// Fallback code if no other case matches
@@ -307,29 +363,10 @@ public class GameEngine
 
 					catch (IllegalArgumentException e)
 					{
-						System.out.println("Invalid action:" + verb);
+						System.out.println(verb + " is not a valid action.");
 					}
-
-					//for (String str : splitCommand) 
-					//{
-					//	System.out.println(str);
-					//}	
 				}
 			}
-
-
-			//			//Instantiate the Journal (InteractableObject)
-			//			InteractableObject nellsJournal = new Journal(
-			//					"Nell's Journal",
-			//					"Llen must never know."
-			//					);
-			//
-			//			nellsJournal.examine();
-
-			//Instantiate the Kitchen (Room)
-			//Kitchen homeKitchen = new Kitchen("This is the description of the kitchen.");
-
-			//homeKitchen.examine();
 		}
 		catch (Exception ex)
 		{

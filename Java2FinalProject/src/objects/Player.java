@@ -37,6 +37,20 @@ public class Player
 	{
 		return inventory.getInventory();
 	}
+	
+	// List inventory
+	public void displayPlayerInventory()
+	{
+		System.out.println("======Inventory======");
+
+		// show the player's current inventory
+		for (InteractableObject item : this.getInventory())
+		{
+			System.out.println("* " + item.getName().toString());
+		}
+
+		System.out.println("=====================");
+	}
 
 	// Add item to inventory
 	public void addItem(InteractableObject item)

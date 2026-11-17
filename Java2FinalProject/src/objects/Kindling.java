@@ -1,22 +1,21 @@
 package objects;
+
 import game.*;
 import rooms.*;
 import interfaces.*;
 import enums.*;
 
-public class Kindling extends InteractableObject
+public class Kindling extends InteractableObject implements Takeable, Droppable, Usable
 {
 
 	public Kindling() 
 	{
-		super("Kindling", "You can use this object to start a fire.");
+		super("KINDLING", "You can use this object to start a fire.");
 		setCanBeAddedToInventory(true);
 		setIsReusable(true);
 	}
-	
-	/**
-	 * 
-	 */
+
+	/*  */
 	@Override
 	public Boolean useItem(Room currentRoom, InteractableObject item)
 	{
@@ -31,13 +30,40 @@ public class Kindling extends InteractableObject
 			System.out.println("You are NOT in the kitchen, so you cannot use this item");
 			return false;
 		}
-		
+
 	}
 
-	//@Override
-	//public void interact(Player player, Room currentRoom)
-	//{
-	//	player.getCurrentRoom();
-	//}
+	/* Take the object and put in inventory */
+	@Override
+	public void take()
+	{
 
+	}
+
+	/* Message presented to player when attempting to take object */
+	@Override
+	public String pickupMessage()
+	{
+		return "Kindling add to your inventory.";
+	}
+
+	/* Drop the object and remove from inventory */
+	@Override	
+	public void drop()
+	{
+
+	}
+
+	/* Message presented to player when attempting to drop object */
+	@Override
+	public String dropMessage()
+	{
+		return "Kindling was removed from your inventory.";
+	}
+
+	@Override
+	public String useMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

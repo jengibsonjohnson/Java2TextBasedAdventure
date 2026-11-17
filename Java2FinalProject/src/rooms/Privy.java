@@ -7,21 +7,12 @@ import enums.*;
 
 public class Privy extends Room 
 {
-	// Variables
-	String description;
-	
 	// Constructor for superclass name and this room's description
 	public Privy() 
 	{
 		super("Privy", "Privy Description");
 	}
-	
-	// Getter for description of this room
-	public String getDescription() 
-	{
-		return description;
-	}
-	
+
 	/**
 	 * Override method for examining this room
 	 */
