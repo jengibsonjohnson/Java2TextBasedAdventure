@@ -8,17 +8,28 @@ import game.*;
 import rooms.*;
 import objects.*;
 
+/**
+ * Lockable Interface, indicates whether an object can be locked/unlocked
+ */
 public interface Lockable 
 {
-	/* Lock the object */
+	/** 
+	 * Lock the object 
+	 */
 	public void lock();
 
-	/* Check the current locked state of the object */
+	/** 
+	 * Check the current locked state of the object 
+	 */
 	public boolean isLocked();
 
-	/* Method to handle unlocking an object with specific item/key */
+	/** 
+	 * Method to handle unlocking an object with specific item/key 
+	 */
 	public boolean unlock(InteractableObject key);
 
-	/* Message presented to player when attempting to interact with locked object */
+	/** 
+	 * Message presented to player when attempting to interact with locked object 
+	 */
 	public String getLockedMessage();
 }

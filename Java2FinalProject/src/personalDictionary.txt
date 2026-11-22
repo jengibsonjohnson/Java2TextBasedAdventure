@@ -1,2 +1,5 @@
 Llen
-llen
+lleninteractable
+droppable
+lockable
+takeable

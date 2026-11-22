@@ -3,8 +3,9 @@ import game.*;
 import objects.*;
 import interfaces.*;
 import enums.*;
+
 /**
- * Class for the Kitchen (Room)
+ * Class for the Kitchen, a Room a Player can enter and interact with
  */
 public class Kitchen extends Room 
 {
@@ -24,8 +25,8 @@ public class Kitchen extends Room
 		System.out.println(getDescription());
 	}
 	
-	/*
-	 * 
+	/**
+	 * Override method for what happens when a player enters the room
 	 */
 	@Override
 	public void onEnter(Player player, GameState state)

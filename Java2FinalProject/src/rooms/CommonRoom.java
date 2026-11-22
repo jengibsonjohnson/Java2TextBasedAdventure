@@ -5,10 +5,14 @@ import interfaces.*;
 import game.*;
 import objects.*;
 
-
+/**
+ * Class for the Common Room, a Room a Player can enter and interact with
+ */
 public class CommonRoom extends Room 
 {
-	// Constructor for superclass name and this room's description
+	/*
+	 * Constructor for superclass name and this room's description, generates all the objects in the room
+	 */
 	public CommonRoom() 
 	{
 		super("Common Room",
@@ -28,7 +32,9 @@ public class CommonRoom extends Room
 		super.addItem(book);
 	}
 	
-	/* Override method for examining this room */
+	/**
+	 * Override method for examining this room
+	 */
 	@Override
 	public void examine()
 	{
@@ -36,6 +42,9 @@ public class CommonRoom extends Room
 	    System.out.println(getDescription());
 	}
 
+	/**
+	 * Override method for what happens when a player enters the room
+	 */
 	@Override
 	public void onEnter(Player player, GameState state) 
 	{

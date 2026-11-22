@@ -22,7 +22,11 @@ public abstract class Room
 	private Map<String, Room> exits;
 	private Inventory itemList;
 	
-	// Constructor
+	/**
+	 * Default constructor for the Room object
+	 * @param name			the name of the room
+	 * @param description	the base description for the room when the Player enters/examines
+	 */
 	public Room (String name, String description)
 	{
 		this.roomName = name;
@@ -31,68 +35,98 @@ public abstract class Room
 		this.itemList = new Inventory();
 	}
 	
-	// Getters and Setters
+	/**
+	 * Get the room name
+	 * @return	roomName
+	 */
 	public String getRoomName()
 	{
 		return roomName;
 	}
 	
+	/**
+	 * Get the room description
+	 * @return	description
+	 */
 	public String getDescription() 
 	{
         return roomDescription;
     }
 	
+	/**
+	 * Get if an exit exists for a Room in a given direction
+	 * @param direction		which direction the Player wants to go
+	 * @return				what Room is in that direction, if any
+	 */
     public Room getExit(String direction) 
     {
         return exits.get(direction.toUpperCase());
     }
 	
+    /**
+     * Set the exits for a Room
+     * @param direction		which direction
+     * @param neighbor		what Room is in that direction, if any
+     */
 	public void setExit(String direction, Room neighbor) 
 	{
         exits.put(direction.toUpperCase(), neighbor);
     }
 
-	// Get the current inventory for the Player
+	/**
+	 * Get the current inventory for the Player
+	 * @return 	the list
+	 */
 	public List<InteractableObject> getInventory()
 	{
 		return itemList.getInventory();
 	}
 
-	// Add item to room inventory
+	/**
+	 * Add item to room inventory
+	 * @param item		item to add
+	 */
 	public void addItem(InteractableObject item)
 	{
 		itemList.addItem(item);
 	}
 
-	// Remove item from room inventory
+	/**
+	 * Remove item from room inventory
+	 * @param item		item to remove
+	 */
 	public void removeItem(InteractableObject item)
 	{
 		itemList.removeItem(item);
 	}
 
-	// Check to see if room has an object
+	/**
+	 * Check to see if the room has a given object
+	 * @param name		item to search for
+	 * @return			whether that object exists
+	 */
 	public Boolean hasItem(String name) 
 	{
 		return itemList.hasItem(name);
 	}
 	
-	// Search the room inventory/item list
+	/**
+	 * Search the room inventory/item list
+	 * @param name		item to search for
+	 * @return			the InteractableObject matching that name
+	 */
 	public InteractableObject searchInventory(String name)
 	{
 		return itemList.searchInventory(name);
 	}
-	
 	
 	/**
 	 * Abstract method: Every room must define its own description upon examination
 	 */
 	public abstract void examine();
 
-	
 	/**
      * Abstract method: Every room must define what happens when the player enters
 	 */
     public abstract void onEnter(Player player, GameState state);
-
-
 }

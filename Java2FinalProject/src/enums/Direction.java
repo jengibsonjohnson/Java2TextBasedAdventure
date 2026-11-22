@@ -8,6 +8,9 @@ import interfaces.*;
 import objects.*;
 import rooms.*;
 
+/**
+ * Enum for Player Direction
+ */
 public enum Direction 
 {
 	NORTH,

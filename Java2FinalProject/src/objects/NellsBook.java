@@ -5,6 +5,9 @@ import rooms.*;
 import interfaces.*;
 import enums.*;
 
+/**
+ * Class for Nell's Alchemy Book which is an InteractableObject
+ */
 public class NellsBook extends InteractableObject implements Takeable, Droppable, Legible, Usable, Reusable
 {
 	private String pickupMessage = "You have added BOOK to your inventory";
@@ -17,42 +20,55 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 			    + "Must gather fresh kindling before attempting another batch!";
 	private boolean hasBeenRead = false;
 	
+	/**
+	 * Default constructor
+	 */
 	public NellsBook() 
 	{
 		super("BOOK", "This is Nell's book of alchemy. The pages are worn and stained in places.");
 		//setCanBeAddedToInventory(true);
-		setIsReusable(true);
+		//setIsReusable(true);
 	}
 
-	/* Take the object and put in inventory */
+	/**
+	 * Take the object and put in inventory
+	 */
 	@Override
 	public void take()
 	{
 
 	}
 
-	/* Message presented to player when attempting to take object */
+	/**
+	 * Message presented to player when attempting to take object
+	 */
 	@Override
 	public String pickupMessage()
 	{
 		return pickupMessage;
 	}
 
-	/* Drop the object and remove from inventory */
+	/**
+	 *  Drop the object and remove from inventory 
+	 */
 	@Override
 	public void drop()
 	{
 
 	}
 
-	/* Message presented to player when attempting to drop object */
+	/**
+	 *  Message presented to player when attempting to drop object
+	 */
 	@Override
 	public String dropMessage()
 	{
 		return dropMessage;
 	}
 
-	/* Reads the objects and marks as read */
+	/**
+	 *  Reads the objects and marks as read 
+	 */
 	@Override
 	public void read()
 	{
@@ -60,28 +76,36 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 		hasBeenRead = true;
 	}
 
-	/* Get the text the object has to read */
+	/** 
+	 * Get the text the object has to read 
+	 */
 	@Override
 	public String getText()
 	{
 		return text;
 	}
 
-	/* Checks whether the object has been read */
+	/**
+	 * Checks whether the object has been read 
+	 */
 	@Override
 	public boolean hasBeenRead()
 	{
 		return hasBeenRead;
 	}
 	
-	/* Use the object */
+	/** 
+	 * Use the object 
+	 */
 	@Override
 	public Boolean useItem(Room currentRoom, InteractableObject item)
 	{	
 		return true;
 	}
 	
-	/* Message presented to player when attempting to use object */
+	/** 
+	 * Message presented to player when attempting to use object 
+	 */
 	@Override
 	public String useMessage() 
 	{

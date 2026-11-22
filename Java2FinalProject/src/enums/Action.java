@@ -5,6 +5,9 @@ import interfaces.*;
 import objects.*;
 import rooms.*;
 
+/**
+ * Enum for Player Actions
+ */
 public enum Action 
 {
 	DRINK,

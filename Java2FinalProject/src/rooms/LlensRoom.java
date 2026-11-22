@@ -4,6 +4,9 @@ import objects.*;
 import interfaces.*;
 import enums.*;
 
+/**
+ * Class for Llen's (Player's) Room, a Room a Player can enter and interact with
+ */
 public class LlensRoom extends Room
 {
 	// Variables
@@ -24,6 +27,9 @@ public class LlensRoom extends Room
 		System.out.println(getDescription());
 	}
 	
+	/**
+	 * Override method for what happens when a player enters the room
+	 */
 	@Override
 	public void onEnter(Player player, GameState state)
 	{

@@ -12,11 +12,16 @@ import objects.*;
  * abilities for the Player), but for this implementation, it is a safe, reliable way to store the helper text.
  */
 
+/**
+ * Class for In-game Helper
+ */
 public final class Helper 
 {
 	private final String helpText;
 
-	/* Constructor */
+	/**
+	 * Default constructor 
+	 */
 	public Helper()
 	{
 		this.helpText = "Available commands (action + noun)\n" +
@@ -34,13 +39,17 @@ public final class Helper
 				"QUIT";
 	}
 
-	/* Get helper text */
+	/** 
+	 * Get helper text 
+	 */
 	public String getHelpText()
 	{
 		return helpText;
 	}
 
-	/* Display help text */
+	/**
+	 *  Display help text 
+	 */
 	public void displayHelpText()
 	{
 		System.out.println(helpText);

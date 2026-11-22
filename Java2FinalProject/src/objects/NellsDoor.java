@@ -5,6 +5,9 @@ import game.*;
 import interfaces.*;
 import rooms.*;
 
+/**
+ * Class for Nell's Door, which is an InteractableObject
+ */
 public class NellsDoor extends InteractableObject implements Lockable
 {
 	/* Variables */
@@ -13,8 +16,8 @@ public class NellsDoor extends InteractableObject implements Lockable
 
 	/*
 	 * Constructor
-	 * @param name
-	 * @param description
+	 * @param name			the name of the object
+	 * @param description	the description
 	 */
 	public NellsDoor(String name, String description) 
 	{
@@ -22,21 +25,27 @@ public class NellsDoor extends InteractableObject implements Lockable
 		this.lock();
 	}
 
-	/* Lock the object */
+	/**
+	 * Lock the object 
+	 */
 	@Override
 	public void lock()
 	{
 		this.isLocked = true;
 	}
 
-	/* Check the current locked state of the object */
+	/** 
+	 * Check the current locked state of the object 
+	 */
 	@Override
 	public boolean isLocked()
 	{
 		return this.isLocked;
 	}
 
-	/* Method to handle unlocking an object with specific item/key */
+	/** 
+	 * Method to handle unlocking an object with specific item/key 
+	 */
 	@Override
 	public boolean unlock(InteractableObject key)
 	{
@@ -58,7 +67,9 @@ public class NellsDoor extends InteractableObject implements Lockable
 		}
 	}
 
-	/* Message presented to player when attempting to interact with locked object */
+	/** 
+	 * Message presented to player when attempting to interact with locked object 
+	 */
 	@Override
 	public String getLockedMessage()
 	{

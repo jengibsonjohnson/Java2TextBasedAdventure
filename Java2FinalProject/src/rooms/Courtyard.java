@@ -4,9 +4,14 @@ import objects.*;
 import interfaces.*;
 import enums.*;
 
+/**
+ * Class for the Courtyard, a Room a Player can enter and interact with
+ */
 public class Courtyard extends Room 
 {
-	// Constructor for superclass name and this room's description
+	/*
+	 * Constructor for superclass name and this room's description, generates all the objects in the room
+	 */
 	public Courtyard() 
 	{
 		super("Courtyard", "Courtyard description");
@@ -22,6 +27,9 @@ public class Courtyard extends Room
 		System.out.println(getDescription());
 	}
 	
+	/**
+	 * Override method for what happens when a player enters the room
+	 */
 	@Override
 	public void onEnter(Player player, GameState state)
 	{
