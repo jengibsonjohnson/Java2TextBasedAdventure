@@ -15,19 +15,31 @@ import objects.*;
 public final class Helper 
 {
 	private final String helpText;
-	
+
 	/* Constructor */
-	public Helper(String text)
+	public Helper()
 	{
-		this.helpText = text;
+		this.helpText = "Available commands (action + noun)\n" +
+				"DRINK\n"+
+				"DROP\n"+
+				"EAT\n"+
+				"EXAMINE\n"+
+				"GO\n"+
+				"READ\n"+
+				"TAKE\n"+
+				"USE\n\n"+
+				"Single-word actions (no noun required)\n"+
+				"HELP\n"+
+				"INVENTORY\n"+
+				"QUIT";
 	}
-	
+
 	/* Get helper text */
 	public String getHelpText()
 	{
 		return helpText;
 	}
-	
+
 	/* Display help text */
 	public void displayHelpText()
 	{

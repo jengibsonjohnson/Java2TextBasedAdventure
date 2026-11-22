@@ -5,12 +5,12 @@ import objects.*;
 import interfaces.*;
 import enums.*;
 
-public class Privy extends Room 
+public class Pantry extends Room 
 {
 	// Constructor for superclass name and this room's description
-	public Privy() 
+	public Pantry() 
 	{
-		super("Privy", "Privy Description");
+		super("Pantry", "Pantry Description");
 	}
 
 	/**

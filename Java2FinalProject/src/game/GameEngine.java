@@ -8,9 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
-/**
- * 
- */
+/* */
 public class GameEngine 
 {	
 	// Instantiate Logging Object to be used by the class
@@ -29,7 +27,7 @@ public class GameEngine
 			Room kitchen = new Kitchen();
 			Room nellsRoom = new NellsRoom();
 			Room nellsWorkshop = new NellsWorkshop();
-			Room privy = new Privy();
+			Room pantry = new Pantry();
 			Room courtyard = new Courtyard();
 			Room llensRoom = new LlensRoom();
 
@@ -37,8 +35,8 @@ public class GameEngine
 			commonRoom.setExit("north", nellsRoom);
 			nellsRoom.setExit("south", commonRoom);
 
-			commonRoom.setExit("south", privy);
-			privy.setExit("north", commonRoom);
+			commonRoom.setExit("south", pantry);
+			pantry.setExit("north", commonRoom);
 
 			commonRoom.setExit("east", courtyard);
 			courtyard.setExit("west", commonRoom);
@@ -56,27 +54,10 @@ public class GameEngine
 			Player player = new Player(commonRoom);
 
 			// Create Helper Text
-			Helper help = new Helper(
-					"Available commands (action + noun)\n" +
-							"DRINK\n"+
-							"DROP\n"+
-							"EAT\n"+
-							"EXAMINE\n"+
-							"GO\n"+
-							"READ\n"+
-							"TAKE\n"+
-							"USE\n\n"+
-							"Single-word actions (no noun required)\n"+
-							"HELP\n"+
-							"INVENTORY\n"+
-							"QUIT"
-					);
+			Helper help = new Helper();
 
-			// Ask Player for name
-			//			System.out.println("Enter your name:");
-			//			String name = sc.nextLine();
-
-			System.out.println("You are currently in the " + player.getCurrentRoom().getRoomName().toString());
+			// Introduction to the game play
+			System.out.println("You awaken, as if from a dream. A sharp, chilling breeze bites at your cheeks");
 
 			while (isPlaying == true)
 			{

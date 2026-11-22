@@ -11,7 +11,11 @@ public class NellsDoor extends InteractableObject implements Lockable
 	private boolean isLocked;
 	private String keyName = "Nell's Key";
 
-	/* Constructor */
+	/*
+	 * Constructor
+	 * @param name
+	 * @param description
+	 */
 	public NellsDoor(String name, String description) 
 	{
 		super(name, description);
