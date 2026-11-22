@@ -6,19 +6,35 @@ import objects.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.time.LocalTime;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
-/* */
+/**
+ * Main class which controls the gameplay
+ */
 public class GameEngine 
 {	
 	// Instantiate Logging Object to be used by the class
 	final static Logger log = 
 			LogManager.getLogger();
 
+
+	/**
+	 * Main method which controls the overall gameplay
+	 * @param args
+	 */
 	public static void main(String[] args) 
 	{
+		// Create locale
+		Locale us = Locale.of("en", "US");
+		Locale spanish = Locale.of("es");
+
 		try 
 		{
+			
 			Scanner sc = new Scanner(System.in);
 			boolean isPlaying = true;
 
@@ -57,7 +73,17 @@ public class GameEngine
 			Helper help = new Helper();
 
 			// Introduction to the game play
-			System.out.println("You awaken, as if from a dream. A sharp, chilling breeze bites at your cheeks");
+			// Use the user's locale
+			LocalTime currentTime = LocalTime.now();
+						
+			GameState.getGreeting(us, currentTime);
+			GameState.getGreeting(spanish, currentTime);
+
+			//// Testing with manual time entry
+			//LocalTime currentTimeManual = LocalTime.of(12, 00);
+			
+			//GameState.testGreeting(us, currentTimeManual);
+			//GameState.testGreeting(spanish, currentTimeManual);
 
 			while (isPlaying == true)
 			{
@@ -351,7 +377,7 @@ public class GameEngine
 		}
 		catch (Exception ex)
 		{
-			//			log.debug("Hello World!");
+			System.out.println(ex.toString());
 		}
 		finally 
 		{
