@@ -3,3 +3,4 @@ lleninteractable
 droppable
 lockable
 takeable
+openable

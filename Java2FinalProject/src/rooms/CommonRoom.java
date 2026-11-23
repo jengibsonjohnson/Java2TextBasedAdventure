@@ -15,23 +15,47 @@ public class CommonRoom extends Room
 	 */
 	public CommonRoom() 
 	{
-		super("Common Room",
-				"A cozy, well-traveled common room. A sturdy chair and a worn bench sit nearby. A door stands to the \n"
-			  + "north leading to a bedroom, another to the south, a heavy wooden door to the west opens out to a \n"
-			  + "courtyard, and the kitchen lies to the east. There is a book laying open on the bench.");
-		
+		super("Common Room", """
+				A cozy, well-traveled common room. A sturdy CHAIR and a worn BENCH sit nearby. Nell's room is to the
+				NORTH of you, your room to the SOUTH, a heavy wooden FRONT DOOR to the WEST opens out to a
+				courtyard, and the kitchen lies to the EAST. There is a BOOK laying open on the BENCH.
+				""");
+
 		InteractableObject chair = new InteractableObject("Chair","This is a chair.");
 		InteractableObject bench = new InteractableObject("Bench","This is a bench.");
-		NellsBook book = new NellsBook();
-		book.setIsReadable(true);
-		book.setCanBeAddedToInventory(true);
-		book.setIsReusable(true);
+		InteractableObject frontDoor = new FrontDoor();
+		NellsBook book = new NellsBook(this);
 		
 		super.addItem(chair);
 		super.addItem(bench);
 		super.addItem(book);
+		super.addItem(frontDoor);
 	}
 	
+	/**
+	 * Remove the BOOK from the room description if the Player takes it
+	 */
+	public void removeBookFromRoomDescription()
+	{
+		this.setDescription("""
+				A cozy, well-traveled common room. A sturdy CHAIR and a worn BENCH sit nearby. Nell's room is to the
+				NORTH of you, your room to the SOUTH, a heavy wooden FRONT DOOR to the WEST opens out to a
+				courtyard, and the kitchen lies to the EAST.
+				""");
+	}
+	
+	/**
+	 * Add the BOOK from the room description if the Player takes it
+	 */
+	public void addBookToRoomDescription()
+	{
+		this.setDescription("""
+				A cozy, well-traveled common room. A sturdy CHAIR and a worn BENCH sit nearby. Nell's room is to the
+				NORTH of you, your room to the SOUTH, a heavy wooden FRONT DOOR to the WEST opens out to a
+				courtyard, and the kitchen lies to the EAST. There is a BOOK laying open on the BENCH.
+				""");
+	}
+
 	/**
 	 * Override method for examining this room
 	 */
@@ -39,7 +63,7 @@ public class CommonRoom extends Room
 	public void examine()
 	{
 		System.out.println("You are in the " + getRoomName() + ".");
-	    System.out.println(getDescription());
+		System.out.println(getDescription());
 	}
 
 	/**
@@ -49,6 +73,6 @@ public class CommonRoom extends Room
 	public void onEnter(Player player, GameState state) 
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 }

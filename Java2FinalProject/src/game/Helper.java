@@ -24,19 +24,40 @@ public final class Helper
 	 */
 	public Helper()
 	{
-		this.helpText = "Available commands (action + noun)\n" +
-				"DRINK\n"+
-				"DROP\n"+
-				"EAT\n"+
-				"EXAMINE\n"+
-				"GO\n"+
-				"READ\n"+
-				"TAKE\n"+
-				"USE\n\n"+
-				"Single-word actions (no noun required)\n"+
-				"HELP\n"+
-				"INVENTORY\n"+
-				"QUIT";
+		this.helpText = """
+				
+				======Help Menu======
+				
+				Most common commands are:
+				ACTION + OBJECT
+				
+				Example:
+				\tGO NORTH
+				\tTAKE KEY
+				\tREAD LETTER
+				\tOPEN DOOR
+				
+				Available commands
+				---------------------
+				CLOSE\t\t- Close an object
+				DRINK\t\t- Drink a liquid
+				DROP\t\t- Drop an item from inventory
+				EAT\t\t- Eat a food item
+				EXAMINE\t\t- Examine an object more closely
+				GO\t\t- Move to another location
+				OPEN\t\t - Open an object
+				READ\t\t- Read an object
+				TAKE\t\t- Add an item to your inventory
+				USE\t\t- Use an item
+
+				Single-word commands
+				---------------------
+				HELP\t\t- Display this help menu
+				INVENTORY\t- View your current inventory
+				QUIT\t\t- Exit the game
+				
+				=====================
+				""";
 	}
 
 	/** 

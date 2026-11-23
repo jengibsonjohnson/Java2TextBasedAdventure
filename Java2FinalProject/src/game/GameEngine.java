@@ -34,7 +34,7 @@ public class GameEngine
 
 		try 
 		{
-			
+
 			Scanner sc = new Scanner(System.in);
 			boolean isPlaying = true;
 
@@ -75,13 +75,32 @@ public class GameEngine
 			// Introduction to the game play
 			// Use the user's locale
 			LocalTime currentTime = LocalTime.now();
-						
+
 			GameState.getGreeting(us, currentTime);
-			GameState.getGreeting(spanish, currentTime);
+			//GameState.getGreeting(spanish, currentTime);
+
+			System.out.println("""
+
+					You know you are in your house. But you are on the floor.
+
+					Snow drifts in lazily through the open FRONT DOOR and settles near you. You simply 
+					stare at it for a moment, confused.
+
+					Then the pain arrives. A throbbing ache in your shoulder and a burning heat on your 
+					cheek. Every muscle protests as you force yourself upright. You touch your shoulder 
+					and pull away your hand with a hiss. The injuries are fresh, but what happened?
+
+					As you stand up, fighting the dizzyness, you search your memory. The last thing you 
+					recall is an argument with your twin sister, Nell. 
+
+					Raised voices. Anger. Fright. Then, nothing but darkness.
+
+					Nell is nowhere to be seen.
+					""");
 
 			//// Testing with manual time entry
 			//LocalTime currentTimeManual = LocalTime.of(12, 00);
-			
+
 			//GameState.testGreeting(us, currentTimeManual);
 			//GameState.testGreeting(spanish, currentTimeManual);
 
@@ -140,6 +159,32 @@ public class GameEngine
 
 							System.out.println("You have quit the game.");
 							isPlaying = false;
+
+							break;
+
+						case CLOSE:
+
+							// CHeck if the object exists in the player's inventory or their current room
+							InteractableObject objectToClose = null;
+
+							// Check player's inventory first
+							objectToClose = player.searchInventory(noun);
+
+							// If not found, check the room's inventory
+							if (objectToClose == null) 
+							{
+								objectToClose = player.getCurrentRoom().searchInventory(noun);
+							}
+
+							// Close if found
+							if (objectToClose != null && objectToClose instanceof Openable o) 
+							{
+								o.close();
+							} 
+							else 
+							{
+								System.out.println("You cannot close that item.");
+							}
 
 							break;
 
@@ -257,6 +302,32 @@ public class GameEngine
 
 							break;
 
+						case OPEN:
+
+							// CHeck if the object exists in the player's inventory or their current room
+							InteractableObject objectToOpen = null;
+
+							// Check player's inventory first
+							objectToOpen = player.searchInventory(noun);
+
+							// If not found, check the room's inventory
+							if (objectToOpen == null) 
+							{
+								objectToOpen = player.getCurrentRoom().searchInventory(noun);
+							}
+
+							// Close if found
+							if (objectToOpen != null && objectToOpen instanceof Openable o) 
+							{
+								o.open();
+							} 
+							else 
+							{
+								System.out.println("You cannot open that item.");
+							}
+
+							break;
+
 						case READ:
 
 							// check that the item is in the player's inventory
@@ -335,7 +406,7 @@ public class GameEngine
 									if (u.useItem(player.getCurrentRoom(), objectToUse)) 
 									{
 										System.out.println(u.useMessage());
-										
+
 										// and the object is not reusable
 										if (!(objectToUse instanceof Reusable))
 										{

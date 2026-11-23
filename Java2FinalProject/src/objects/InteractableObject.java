@@ -12,10 +12,6 @@ public class InteractableObject
 	// Variables
 	private String name;
 	private String description;
-//	private boolean canBeAddedToInventory;
-//	private boolean isReusable;
-//	private boolean isReadable;
-//	private boolean isEdible;
 
 	/**
 	 * Default constructor for InteractaleObject
@@ -27,10 +23,6 @@ public class InteractableObject
 		//, Boolean canBePickedUp, Boolean objectIsReusable, Boolean objectCanBeRead, Boolean objectEdible
 		this.name = objectName;
 		this.description = objectDescription;
-//		this.canBeAddedToInventory = false;
-//		this.isReusable = false;
-//		this.isReadable = false;
-//		this.isEdible = false;
 	}
 
 	/**
@@ -51,30 +43,6 @@ public class InteractableObject
 		return description;
 	}
 
-//	/* */
-//	public boolean getCanBeAddedToInventory()
-//	{
-//		return canBeAddedToInventory;
-//	}
-//
-//	/* */
-//	public boolean getIsReusable()
-//	{
-//		return isReusable;
-//	}
-//
-//	/* */
-//	public boolean getIsReadable()
-//	{
-//		return isReadable;
-//	}
-//
-//	/* */
-//	public boolean getIsEdible()
-//	{
-//		return isEdible;
-//	}
-
 	/**
 	 * Set the name of the object
 	 * @param objectName
@@ -92,30 +60,6 @@ public class InteractableObject
 	{
 		this.description = objectDescription;
 	}
-
-//	/* */
-//	public void setCanBeAddedToInventory(Boolean value)
-//	{
-//		this.canBeAddedToInventory = value;
-//	}
-//
-//	/* */
-//	public void setIsReusable(Boolean value)
-//	{
-//		this.isReusable = value;
-//	}
-//
-//	/* */
-//	public void setIsReadable(Boolean value)
-//	{
-//		this.isReadable = value;
-//	}
-//
-//	/* */
-//	public void setIsEdible(Boolean value)
-//	{
-//		this.isEdible = value;
-//	}
 
 	/**
 	 * Method that will print the object's description when the object is examined

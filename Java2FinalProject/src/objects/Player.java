@@ -59,7 +59,7 @@ public class Player
 	 */
 	public void displayPlayerInventory()
 	{
-		System.out.println("======Inventory======");
+		System.out.println("======Inventory======\n");
 
 		// show the player's current inventory
 		for (InteractableObject item : this.getInventory())
@@ -67,7 +67,7 @@ public class Player
 			System.out.println("* " + item.getName().toString());
 		}
 
-		System.out.println("=====================");
+		System.out.println("\n=====================");
 	}
 
 	/**

@@ -10,24 +10,45 @@ import enums.*;
  */
 public class NellsBook extends InteractableObject implements Takeable, Droppable, Legible, Usable, Reusable
 {
+	private CommonRoom commonRoom;
 	private String pickupMessage = "You have added BOOK to your inventory";
 	private String dropMessage = "You have removed BOOK from your inventory.";
-	private String text = "Nell's careful script appears in the margin for a tonic of clarity: \n"
-			    + "The formal texts call for nightshade, but my own trials prove a gentler hand works better. Steep \n"
-			    + "three petals of a red rose alongside the pollen of a white lily. The mixture will boil violently \n"
-			    + "until you temper it with a pinch of ash from the hearth. \n"
-			    + "\n"
-			    + "Must gather fresh kindling before attempting another batch!";
+	private String text = """
+
+			The BOOK falls open to a recipe towards the middle. The pages crackle from being dampened and dried 
+			several times. You remember that Nell got this BOOK from Old Martha Whittle, the local witch and 
+			alchemist. 
+			
+			You see her hasty script in the margin for a TONIC of clarity:
+
+			\tText calls for nightshade, but a gentler herb works better!
+			\tSteep three petals of red ROSE, pollen of white LILY
+			\tThe mixture will boil violently until you temper with a pinch of ASH.
+
+			\tMust gather fresh KINDLING before attempting another batch!
+			
+			Nell desperately wanted to learn the healing arts since our parents died two years ago. Many
+			times you would come home and find Nell studying these pages.
+			
+			""";
 	private boolean hasBeenRead = false;
-	
+
 	/**
 	 * Default constructor
 	 */
-	public NellsBook() 
+	public NellsBook()
 	{
 		super("BOOK", "This is Nell's book of alchemy. The pages are worn and stained in places.");
-		//setCanBeAddedToInventory(true);
-		//setIsReusable(true);
+	}
+	
+	/**
+	 * Constructor with the Common Room input to tie the room to the book
+	 * @param commonRoom	Room object
+	 */
+	public NellsBook(CommonRoom commonRoom) 
+	{
+		this();
+		this.commonRoom = commonRoom;
 	}
 
 	/**
@@ -36,7 +57,7 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	@Override
 	public void take()
 	{
-
+		commonRoom.removeBookFromRoomDescription();
 	}
 
 	/**
@@ -54,7 +75,7 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	@Override
 	public void drop()
 	{
-
+		commonRoom.addBookToRoomDescription();
 	}
 
 	/**
@@ -93,7 +114,7 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	{
 		return hasBeenRead;
 	}
-	
+
 	/** 
 	 * Use the object 
 	 */
@@ -102,7 +123,7 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	{	
 		return true;
 	}
-	
+
 	/** 
 	 * Message presented to player when attempting to use object 
 	 */

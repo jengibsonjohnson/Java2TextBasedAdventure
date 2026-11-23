@@ -10,11 +10,13 @@ import rooms.*;
  */
 public enum Action 
 {
+	CLOSE,
 	DRINK,
 	DROP,
 	EAT,
 	EXAMINE,
 	GO,
+	OPEN,
 	READ,
 	TAKE,
 	USE,

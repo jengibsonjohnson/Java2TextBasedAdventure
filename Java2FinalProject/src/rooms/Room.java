@@ -62,6 +62,15 @@ public abstract class Room
     {
         return exits.get(direction.toUpperCase());
     }
+    
+    /**
+     * Set a new description for a room
+     * @param newDescription
+     */
+    public void setDescription(String newDescription)
+    {
+    	this.roomDescription = newDescription;
+    }
 	
     /**
      * Set the exits for a Room
