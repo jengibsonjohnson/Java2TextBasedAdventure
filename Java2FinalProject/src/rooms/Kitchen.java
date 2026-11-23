@@ -12,7 +12,44 @@ public class Kitchen extends Room
 	// Constructor for superclass name and this room's description
 	public Kitchen() 
 	{
-		super("Kitchen", "Kitchen description");
+		super("KITCHEN", "Kitchen description","""
+				The kitchen holds the faint scent of fresh bread and burning firewood. A sturdy TABLE 
+				surrounded by several CHAIRS occupies the center of the room. A loaf of BREAD rests 
+				beside a worn CUTTING BOARD and a sharp KNIFE. A VASE of fresh FLOWERS brightens the 
+				space. To one side, a stone HEARTH is unlit and swept clean. The HEARTH supports a 
+				blackened COOKING POT, while a set of FIRE TOOLS hangs within easy reach.
+				""");
+		
+		InteractableObject table = new InteractableObject("TABLE", """
+				A solid wooden table scarred by years of meals, conversations, and daily work. Despite 
+				the scratches and stains, it remains sturdy and well cared for.
+				""");
+		
+		InteractableObject chairs = new InteractableObject("CHAIRS", """
+				Several simple wooden chairs surround the table. Though plain, they appear comfortable 
+				enough for long meals and friendly gatherings.
+				""");
+		
+		InteractableObject bread = new Bread();
+		
+		InteractableObject cuttingBoard = new InteractableObject("CUTTING BOARD", """
+				A thick wooden cutting board marked by countless knife cuts. Years of use have left 
+				its surface worn but functional.
+				""");
+		
+		// Hearth
+		
+		// Flowers
+		
+		// Cooking Pot
+		
+		// Fire Tools
+		
+		
+		super.addItem(table);
+		super.addItem(chairs);
+		super.addItem(bread);
+		super.addItem(cuttingBoard);
 	}
 	
 	/**
@@ -22,7 +59,7 @@ public class Kitchen extends Room
 	public void examine()
 	{
 		System.out.println(getRoomName());
-		System.out.println(getDescription());
+		System.out.println(getExaminationDescription());
 	}
 	
 	/**

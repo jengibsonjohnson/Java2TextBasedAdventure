@@ -18,7 +18,8 @@ public abstract class Room
 {
 	// Variables
 	protected String roomName;
-	private String roomDescription;
+	private String roomDescription;			// general room description on entering
+	private String examinationDescription;	// further details when Player examines the room
 	private Map<String, Room> exits;
 	private Inventory itemList;
 	
@@ -27,10 +28,11 @@ public abstract class Room
 	 * @param name			the name of the room
 	 * @param description	the base description for the room when the Player enters/examines
 	 */
-	public Room (String name, String description)
+	public Room (String name, String description, String examine)
 	{
 		this.roomName = name;
 		this.roomDescription = description;
+		this.examinationDescription = examine;
 		this.exits = new HashMap<>();
 		this.itemList = new Inventory();
 	}
@@ -54,6 +56,15 @@ public abstract class Room
     }
 	
 	/**
+	 * Get the examination description text
+	 * @return
+	 */
+	public String getExaminationDescription()
+	{
+		return examinationDescription;
+	}
+	
+	/**
 	 * Get if an exit exists for a Room in a given direction
 	 * @param direction		which direction the Player wants to go
 	 * @return				what Room is in that direction, if any
@@ -70,6 +81,15 @@ public abstract class Room
     public void setDescription(String newDescription)
     {
     	this.roomDescription = newDescription;
+    }
+    
+    /**
+     * Set a new examination description for a room
+     * @param newDescription
+     */
+    public void setExaminationDescription (String newDescription)
+    {
+    	this.examinationDescription = newDescription;
     }
 	
     /**

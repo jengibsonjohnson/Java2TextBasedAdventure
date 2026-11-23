@@ -35,10 +35,9 @@ public class Kindling extends InteractableObject implements Takeable, Droppable,
 
 		else
 		{
-			System.out.println("You are NOT in the kitchen, so you cannot use this item");
+			System.out.println("You cannot use KINDLING here.");
 			return false;
 		}
-
 	}
 
 	/**
@@ -56,7 +55,7 @@ public class Kindling extends InteractableObject implements Takeable, Droppable,
 	@Override
 	public String pickupMessage()
 	{
-		return "Kindling add to your inventory.";
+		return "KINDLING add to your inventory.";
 	}
 
 	/**
@@ -74,7 +73,7 @@ public class Kindling extends InteractableObject implements Takeable, Droppable,
 	@Override
 	public String dropMessage()
 	{
-		return "Kindling was removed from your inventory.";
+		return "KINDLING was removed from your inventory.";
 	}
 
 	/**

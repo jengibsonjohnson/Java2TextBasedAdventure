@@ -13,7 +13,7 @@ public class Pantry extends Room
 	// Constructor for superclass name and this room's description
 	public Pantry() 
 	{
-		super("Pantry", "Pantry Description");
+		super("Pantry", "Pantry Description","Pantry examination");
 	}
 
 	/**
@@ -23,7 +23,7 @@ public class Pantry extends Room
 	public void examine()
 	{
 		System.out.println(getRoomName());
-		System.out.println(getDescription());
+		System.out.println(getExaminationDescription());
 	}
 	
 	/**

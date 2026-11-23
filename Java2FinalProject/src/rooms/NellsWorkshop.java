@@ -12,7 +12,7 @@ public class NellsWorkshop extends Room
 	// Constructor for superclass name and this room's description
 	public NellsWorkshop() 
 	{
-		super("Nell's Workshop", "Nell's workshop description");
+		super("Nell's Workshop", "Nell's workshop description","Nell's workshop examination");
 	}
 	
 	/**
@@ -22,7 +22,7 @@ public class NellsWorkshop extends Room
 	public void examine()
 	{
 		System.out.println(getRoomName());
-		System.out.println(getDescription());
+		System.out.println(getExaminationDescription());
 	}
 	
 	/**

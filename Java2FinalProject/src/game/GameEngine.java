@@ -49,22 +49,24 @@ public class GameEngine
 
 			// Set up exits
 			commonRoom.setExit("north", nellsRoom);
-			nellsRoom.setExit("south", commonRoom);
-
 			commonRoom.setExit("south", pantry);
+			commonRoom.setExit("west", courtyard);
+			commonRoom.setExit("east", kitchen);
+
 			pantry.setExit("north", commonRoom);
 
-			commonRoom.setExit("east", courtyard);
-			courtyard.setExit("west", commonRoom);
+			nellsRoom.setExit("south", commonRoom);
+			nellsRoom.setExit("east", nellsWorkshop);
 
-			commonRoom.setExit("west", kitchen);
-			kitchen.setExit("east", commonRoom);
+			nellsWorkshop.setExit("west", nellsRoom);
 
+			courtyard.setExit("east", commonRoom);
+
+			kitchen.setExit("west", commonRoom);
 			kitchen.setExit("south", llensRoom);
+
 			llensRoom.setExit("north", kitchen);
 
-			nellsRoom.setExit("west", nellsWorkshop);
-			nellsWorkshop.setExit("east", nellsRoom);
 
 			// Create the Player object
 			Player player = new Player(commonRoom);
@@ -73,11 +75,9 @@ public class GameEngine
 			Helper help = new Helper();
 
 			// Introduction to the game play
-			// Use the user's locale
+			// Use the current time to drive the introduction message
 			LocalTime currentTime = LocalTime.now();
-
 			GameState.getGreeting(us, currentTime);
-			//GameState.getGreeting(spanish, currentTime);
 
 			System.out.println("""
 
@@ -223,14 +223,27 @@ public class GameEngine
 
 						case EAT:
 
-							// TODO
-							// check that the item is in the room or is in the player's inventory
+							InteractableObject objectToEat = null;
 
-							// if it is, then check to see if the object is edible
+							// Check player's inventory first
+							objectToEat = player.searchInventory(noun);
 
-							// if it is, then eat the item
+							// If not found, check the room's inventory
+							if (objectToEat == null) 
+							{
+								objectToEat = player.getCurrentRoom().searchInventory(noun);
+							}
 
-							// else, tell the player they cannot do that
+							// If found check if edible, otherwise give feedback
+							if (objectToEat != null && objectToEat instanceof Edible e) 
+							{
+								e.eat();
+								
+							} 
+							else 
+							{
+								System.out.println("You cannot eat that.");
+							}	
 
 							break;
 

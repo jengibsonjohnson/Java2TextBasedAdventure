@@ -12,7 +12,7 @@ public class NellsRoom extends Room
 	// Constructor for superclass name and this room's description
 	public NellsRoom() 
 	{
-		super("Nell's Room", "Nell's Room Description");
+		super("Nell's Room", "Nell's Room Description","Nell's reoom examination");
 		
 		InteractableObject nellsDoor = new NellsDoor("Nell's Door", "This is the door to Nell's workshop.");
 		
@@ -26,7 +26,7 @@ public class NellsRoom extends Room
 	public void examine()
 	{
 		System.out.println(getRoomName());
-		System.out.println(getDescription());
+		System.out.println(getExaminationDescription());
 	}
 	
 	/**

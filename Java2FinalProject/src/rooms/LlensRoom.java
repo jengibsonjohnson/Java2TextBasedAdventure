@@ -14,7 +14,7 @@ public class LlensRoom extends Room
 	// Constructor for superclass name and this room's description
 	public LlensRoom() 
 	{
-		super("Llen's Room", "Llen's room description");
+		super("Llen's Room", "Llen's room description","Llen's reeom examination");
 	}
 	
 	/**
@@ -24,7 +24,7 @@ public class LlensRoom extends Room
 	public void examine()
 	{
 		System.out.println(getRoomName());
-		System.out.println(getDescription());
+		System.out.println(getExaminationDescription());
 	}
 	
 	/**

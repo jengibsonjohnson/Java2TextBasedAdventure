@@ -15,21 +15,14 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	private String dropMessage = "You have removed BOOK from your inventory.";
 	private String text = """
 
-			The BOOK falls open to a recipe towards the middle. The pages crackle from being dampened and dried 
-			several times. You remember that Nell got this BOOK from Old Martha Whittle, the local witch and 
-			alchemist. 
-			
-			You see her hasty script in the margin for a TONIC of clarity:
+			You see Nell's hasty script in the margin for a TONIC of clarity:
 
 			\tText calls for nightshade, but a gentler herb works better!
 			\tSteep three petals of red ROSE, pollen of white LILY
 			\tThe mixture will boil violently until you temper with a pinch of ASH.
 
 			\tMust gather fresh KINDLING before attempting another batch!
-			
-			Nell desperately wanted to learn the healing arts since our parents died two years ago. Many
-			times you would come home and find Nell studying these pages.
-			
+
 			""";
 	private boolean hasBeenRead = false;
 
@@ -38,9 +31,16 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	 */
 	public NellsBook()
 	{
-		super("BOOK", "This is Nell's book of alchemy. The pages are worn and stained in places.");
+		super("BOOK", """
+				The BOOK falls open to a recipe towards the middle. The pages crackle from being dampened
+				and dried several times. You remember that Nell got this BOOK from Old Martha Whittle, 
+				the local witch and alchemist.
+
+				Nell desperately wanted to learn the healing arts since your parents died two years ago. Many
+				times you would come home and find Nell studying these pages.
+				""");
 	}
-	
+
 	/**
 	 * Constructor with the Common Room input to tie the room to the book
 	 * @param commonRoom	Room object
