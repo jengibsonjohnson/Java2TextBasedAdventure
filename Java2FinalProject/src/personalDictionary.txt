@@ -4,3 +4,4 @@ droppable
 lockable
 takeable
 openable
+interactable

@@ -5,10 +5,15 @@ import rooms.*;
 import interfaces.*;
 import enums.*;
 
-
+/**
+ * Class for Bread InteractableObject 
+ */
 public class Bread extends InteractableObject implements Takeable, Droppable, Edible, Usable
 {
 
+	/**
+	 * Default constructor
+	 */
 	public Bread() 
 	{
 		super("BREAD", """

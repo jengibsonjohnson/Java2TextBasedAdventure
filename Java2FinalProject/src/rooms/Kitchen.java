@@ -12,7 +12,12 @@ public class Kitchen extends Room
 	// Constructor for superclass name and this room's description
 	public Kitchen() 
 	{
-		super("KITCHEN", "Kitchen description","""
+		super("KITCHEN", """
+				You enter the kitchen. The air smells faintly of fresh bread and woodsmoke, with a 
+				central TABLE, a cold stone HEARTH, and a vase of FLOWERS visible at a glance. The
+				Common Room is to the WEST and your room is to the SOUTH.
+				""",
+				"""
 				The kitchen holds the faint scent of fresh bread and burning firewood. A sturdy TABLE 
 				surrounded by several CHAIRS occupies the center of the room. A loaf of BREAD rests 
 				beside a worn CUTTING BOARD and a sharp KNIFE. A VASE of fresh FLOWERS brightens the 
@@ -30,26 +35,25 @@ public class Kitchen extends Room
 				enough for long meals and friendly gatherings.
 				""");
 		
-		InteractableObject bread = new Bread();
-		
 		InteractableObject cuttingBoard = new InteractableObject("CUTTING BOARD", """
 				A thick wooden cutting board marked by countless knife cuts. Years of use have left 
 				its surface worn but functional.
 				""");
 		
-		// Hearth
-		
-		// Flowers
-		
-		// Cooking Pot
-		
-		// Fire Tools
-		
+		InteractableObject bread = new Bread();
+		InteractableObject hearth = new Hearth();
+		InteractableObject flowers = new Flowers(this);	
+		InteractableObject cookingPot = new CookingPot();	
+		InteractableObject firetools = new FireTools(this);
 		
 		super.addItem(table);
 		super.addItem(chairs);
 		super.addItem(bread);
 		super.addItem(cuttingBoard);
+		super.addItem(hearth);
+		super.addItem(flowers);
+		super.addItem(cookingPot);
+		super.addItem(firetools);
 	}
 	
 	/**

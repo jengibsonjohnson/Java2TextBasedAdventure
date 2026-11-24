@@ -17,7 +17,7 @@ public class CommonRoom extends Room
 	{
 		super("Common Room", """
 				A cozy, well-maintained common room. A sturdy CHAIR and a worn BENCH sit nearby. Nell's 
-				room is to the NORTH of you, your room to the SOUTH, a heavy wooden FRONT DOOR to the 
+				room is to the NORTH of you, the pantry to the SOUTH, a heavy wooden FRONT DOOR to the 
 				WEST opens out to a courtyard, and the kitchen lies to the EAST. There is a BOOK laying 
 				open on the BENCH.
 				""",
