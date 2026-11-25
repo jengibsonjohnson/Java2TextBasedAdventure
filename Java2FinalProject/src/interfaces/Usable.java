@@ -18,5 +18,5 @@ public interface Usable
 	/** 
 	 * Message presented to player when attempting to use object 
 	 */
-	public String useMessage();
+	public String useMessage(Room playerCurrentRoom);
 }

@@ -25,7 +25,7 @@ public class Rose extends InteractableObject implements Takeable, Droppable, Usa
 	}
 
 	@Override
-	public String useMessage() 
+	public String useMessage(Room playerCurrentRoom) 
 	{
 		// TODO Auto-generated method stub
 		return null;

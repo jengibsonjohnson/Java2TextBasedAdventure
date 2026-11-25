@@ -39,13 +39,13 @@ public class GameEngine
 			boolean isPlaying = true;
 
 			// Instantiate room objects
-			Room commonRoom = new CommonRoom();
-			Room kitchen = new Kitchen();
-			Room nellsRoom = new NellsRoom();
-			Room nellsWorkshop = new NellsWorkshop();
-			Room pantry = new Pantry();
-			Room courtyard = new Courtyard();
-			Room llensRoom = new LlensRoom();
+			CommonRoom commonRoom = new CommonRoom();
+			Kitchen kitchen = new Kitchen();
+			NellsRoom nellsRoom = new NellsRoom();
+			NellsWorkshop nellsWorkshop = new NellsWorkshop();
+			Pantry pantry = new Pantry();
+			Courtyard courtyard = new Courtyard(commonRoom.getFrontDoor());
+			LlensRoom llensRoom = new LlensRoom();
 
 			// Set up exits
 			commonRoom.setExit("north", nellsRoom);
@@ -238,7 +238,7 @@ public class GameEngine
 							if (objectToEat != null && objectToEat instanceof Edible e) 
 							{
 								e.eat();
-								
+
 							} 
 							else 
 							{
@@ -407,29 +407,60 @@ public class GameEngine
 
 						case USE:
 
-							// Check to see if the object exists in the player's current room
+							// Check to see if the object exists in the player's inventory
 							InteractableObject objectToUse = player.searchInventory(noun);
+							Room currentRoom = player.getCurrentRoom();
 
 							// If the object exists
-							if (objectToUse != null) 
+							if (objectToUse != null)
 							{
 								if (objectToUse instanceof Usable u)
 								{
-									// use the item, if item usage successful
-									if (u.useItem(player.getCurrentRoom(), objectToUse)) 
-									{
-										System.out.println(u.useMessage());
+									// Prompt user for what they want to use the object on (the target)
+									System.out.println("Use " + objectToUse.getName() + " on what?");
 
-										// and the object is not reusable
-										if (!(objectToUse instanceof Reusable))
-										{
-											player.removeItem(objectToUse);
-										}
+									String target = sc.nextLine().toUpperCase().trim();
+
+									if (target.isEmpty())
+									{
+										System.out.println("Nothing was chosen.");
+										break;
 									}
 
+									// Check player's inventory first for the target, then the current room's inventory
+									InteractableObject usageTarget = player.searchInventory(target);
+
+									if (usageTarget == null)
+									{
+										usageTarget = player.getCurrentRoom().searchInventory(target);
+									}
+
+									if (usageTarget != null)
+									{
+										// Use the item on the target
+										Boolean usageSuccessful = u.useItem(player.getCurrentRoom(), usageTarget);
+										String message = u.useMessage(currentRoom);
+										
+										if (message != null && !message.isBlank())
+										{
+											System.out.println(message);											
+										}
+										else
+										{
+											System.out.println("You cannot use " + objectToUse.getName() + " on " + usageTarget.getName() + ".");
+										}
+										
+										if (usageSuccessful)
+										{
+											if (!(objectToUse instanceof Reusable))
+											{
+												player.removeItem(objectToUse);
+											}
+										}
+									}
 									else
 									{
-										System.out.println("You cannot use that item here.");
+										System.out.println("You don't see that here.");
 									}
 								}
 								else
@@ -439,9 +470,9 @@ public class GameEngine
 							}
 							else
 							{
-								// if not, tell the player they don't have that item
+								// If not, tell the player they don't have that item
 								System.out.println("You do not have that item.");
-							}		
+							}
 
 							break;
 

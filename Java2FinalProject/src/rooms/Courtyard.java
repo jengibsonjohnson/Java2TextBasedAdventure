@@ -12,7 +12,7 @@ public class Courtyard extends Room
 	/*
 	 * Constructor for superclass name and this room's description, generates all the objects in the room
 	 */
-	public Courtyard() 
+	public Courtyard(InteractableObject frontDoor) 
 	{
 		super("Courtyard", """
 				You feel the air change and the temperature drop significantly as you step out into 
@@ -30,9 +30,12 @@ public class Courtyard extends Room
 
 		InteractableObject axe = new Axe();
 		InteractableObject firewood = new Firewood();
+		InteractableObject kindling = new Kindling();
 		
 		super.addItem(axe);
 		super.addItem(firewood);
+		super.addItem(frontDoor);
+		super.addItem(kindling);
 	}
 
 	/**

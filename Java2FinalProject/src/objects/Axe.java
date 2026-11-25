@@ -26,7 +26,7 @@ public class Axe extends InteractableObject implements Takeable, Droppable, Usab
 	}
 
 	@Override
-	public String useMessage() 
+	public String useMessage(Room playerCurrentRoom) 
 	{
 		// TODO Auto-generated method stub
 		return null;

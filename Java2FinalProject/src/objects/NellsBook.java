@@ -128,7 +128,7 @@ public class NellsBook extends InteractableObject implements Takeable, Droppable
 	 * Message presented to player when attempting to use object 
 	 */
 	@Override
-	public String useMessage() 
+	public String useMessage(Room playerCurrentRoom) 
 	{
 		return "You used the book!";
 	}

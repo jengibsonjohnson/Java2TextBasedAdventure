@@ -11,6 +11,10 @@ import rooms.Room;
 public class Hearth extends InteractableObject implements Usable, Reusable
 {
 
+	private Boolean fireLit = false;
+	private Boolean woodAdded = false;
+	private Boolean ashesCreated = false;
+	
 	/**
 	 * Default constructor
 	 */
@@ -39,9 +43,63 @@ public class Hearth extends InteractableObject implements Usable, Reusable
 	}
 
 	@Override
-	public String useMessage() 
+	public String useMessage(Room playerCurrentRoom) 
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	/**
+	 * Get flag that the fire was lit
+	 * @return
+	 */
+	public Boolean getFireLit()
+	{
+		return fireLit;
+	}
+	
+	/**
+	 * Get flag that wood was added to fire
+	 * @return
+	 */
+	public Boolean getWoodAdded()
+	{
+		return woodAdded;
+	}
+	
+	/**
+	 * Get the flag that ashes were created
+	 * @return
+	 */
+	public Boolean getAshesCreated()
+	{
+		return ashesCreated;
+	}
+	
+	/**
+	 * Set flag that the fire was lit
+	 * @param fireLit
+	 */
+	public void setFireLit(Boolean fireLit)
+	{
+		this.fireLit = fireLit;
+	}
+	
+	/**
+	 * Set flag that wood was added to fire
+	 * @param woodAdded
+	 */
+	public void setWoodAdded(Boolean woodAdded)
+	{
+		this.woodAdded = woodAdded;
+	}
+	
+	/**
+	 * Set the flag that ashes were created
+	 * @param ashesCreated
+	 */
+	public void setAshesCreated(Boolean ashesCreated)
+	{
+		this.ashesCreated = ashesCreated;
 	}
 }

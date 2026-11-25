@@ -33,7 +33,7 @@ public class Firewood extends InteractableObject implements Takeable, Droppable,
 	}
 
 	@Override
-	public String useMessage() {
+	public String useMessage(Room playerCurrentRoom) {
 		// TODO Auto-generated method stub
 		return null;
 	}

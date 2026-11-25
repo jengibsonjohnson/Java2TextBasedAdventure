@@ -10,6 +10,8 @@ import objects.*;
  */
 public class CommonRoom extends Room 
 {
+	private InteractableObject frontDoor;
+	
 	/*
 	 * Constructor for superclass name and this room's description, generates all the objects in the room
 	 */
@@ -28,16 +30,16 @@ public class CommonRoom extends Room
 				bench appears well read, its pages dog-eared and marked by frequent visits.
 				""");
 
-		InteractableObject chair = new InteractableObject("Chair","""
+		InteractableObject chair = new InteractableObject("CHAIR","""
 				The chair looks surprisingly comfortable despite its plain design. A small cushion 
 				rests on the seat, slightly flattened from regular use. It seems to be a favorite 
 				spot for reading.
 				""");
-		InteractableObject bench = new InteractableObject("Bench","""
+		InteractableObject bench = new InteractableObject("BENCH","""
 				The bench is old but dependable. Deep scratches and worn patches hint at decades of 
 				regular use, yet it remains as sturdy as the day it was built.
 				""");
-		InteractableObject frontDoor = new FrontDoor();
+		frontDoor = new FrontDoor();
 		NellsBook book = new NellsBook(this);
 
 		super.addItem(chair);
@@ -100,5 +102,14 @@ public class CommonRoom extends Room
 	{
 		// TODO Auto-generated method stub
 
+	}
+	
+	/**
+	 * Get the front door object (for use by Courtyard)
+	 * @return
+	 */
+	public InteractableObject getFrontDoor()
+	{
+		return frontDoor;
 	}
 }

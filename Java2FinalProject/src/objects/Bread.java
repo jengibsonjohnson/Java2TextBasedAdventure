@@ -30,7 +30,7 @@ public class Bread extends InteractableObject implements Takeable, Droppable, Ed
 	}
 
 	@Override
-	public String useMessage() 
+	public String useMessage(Room playerCurrentRoom) 
 	{
 		// TODO Auto-generated method stub
 		return null;

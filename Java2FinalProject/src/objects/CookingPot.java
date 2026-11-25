@@ -21,7 +21,7 @@ public class CookingPot extends InteractableObject implements Usable, Reusable
 	}
 
 	@Override
-	public String useMessage() {
+	public String useMessage(Room playerCurrentRoom) {
 		// TODO Auto-generated method stub
 		return null;
 	}
